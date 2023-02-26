@@ -1,6 +1,6 @@
 ## about
 
-Mini HTML custom element for flashing plain text messages, such as loading placeholders.
+Mini HTML custom element for flashing plain text messages such as loading placeholders.
 
 ## setup
 
