@@ -16,7 +16,7 @@ Source from an import map:
 ```json
 {
   "imports": {
-    "@thewhodidthis/flash": "https://thewhodidthis.com/modules/flash/main.js",
+    "@thewhodidthis/flash": "https://thewhodidthis.com/modules/flash/main.js"
   }
 }
 ```
