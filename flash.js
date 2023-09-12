@@ -22,6 +22,7 @@ var flash = (function() {
       this.attachShadow({ mode: "open" })
       this.shadowRoot.appendChild(template)
     }
+    #timer
     static get observedAttributes() {
       return ["flash", "ready"]
     }
@@ -49,10 +50,10 @@ var flash = (function() {
 
       this.setAttribute("timeout", v)
     }
-    attributeChangedCallback(name, _, next) {
+    attributeChangedCallback(name, _, value) {
       switch (name) {
         case "ready": {
-          if (next !== "null") {
+          if (value !== null) {
             const ready = new Event("ready")
 
             this.replaceChildren()
@@ -62,13 +63,15 @@ var flash = (function() {
           break
         }
         case "flash": {
-          const timer = setTimeout(() => {
-            clearTimeout(timer)
+          if (this.#timer) {
+            clearTimeout(this.#timer)
+          }
 
+          this.#timer = setTimeout(() => {
             this.setAttribute("ready", "")
           }, this.timeout)
 
-          this.replaceChildren(next)
+          this.replaceChildren(value)
           this.removeAttribute("ready")
 
           break

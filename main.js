@@ -19,6 +19,7 @@ export default class Flash extends HTMLElement {
     this.attachShadow({ mode: "open" })
     this.shadowRoot.appendChild(template)
   }
+  #timer
   static get observedAttributes() {
     return ["flash", "ready"]
   }
@@ -59,9 +60,11 @@ export default class Flash extends HTMLElement {
         break
       }
       case "flash": {
-        const timer = setTimeout(() => {
-          clearTimeout(timer)
+        if (this.#timer) {
+          clearTimeout(this.#timer)
+        }
 
+        this.#timer = setTimeout(() => {
           this.setAttribute("ready", "")
         }, this.timeout)
 
