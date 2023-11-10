@@ -33,7 +33,7 @@ export default class Flash extends HTMLElement {
     return this.getAttribute("ready")
   }
   set ready(v) {
-    this.setAttribute("ready", v)
+    this.setAttribute("ready", "")
   }
   get timeout() {
     const v = this.hasAttribute("timeout") ? this.getAttribute("timeout") : 1500
