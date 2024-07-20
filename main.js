@@ -5,16 +5,15 @@ export default class Flash extends HTMLElement {
     super()
 
     const template = document.createRange().createContextualFragment(`
-      <style>
-        :host {
-          display: block;
-        }
-        :host([hidden]) {
-          display: none;
-        }
-      </style>
-      <slot></slot>
-    `)
+<style>
+  :host {
+    display: block;
+  }
+  :host([hidden]) {
+    display: none;
+  }
+</style>
+<slot></slot>`)
 
     this.attachShadow({ mode: "open" })
     this.shadowRoot.appendChild(template)
